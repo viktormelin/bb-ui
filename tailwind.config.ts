@@ -8,10 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'brand-purple-light': '#6E34BF',
+        'brand-purple-normal': '#42208C',
+        'brand-purple-dark': '#2B1E59',
+        'brand-purple-darker': '#201740',
+        'brand-green': '#4EA66D',
+      },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'hero-image': 'url(/images/12637456_5026621.jpg)',
       },
     },
   },
