@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-black">
       <body className={openSans.className}>
         <ClientProviders>
           <nav className="fixed w-full top-0 p-4 text-white flex justify-between items-center">
@@ -28,7 +28,7 @@ export default function RootLayout({
               height={100}
               alt="billbuddies"
             />
-            <button>
+            {/* <button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -41,7 +41,7 @@ export default function RootLayout({
                   clip-rule="evenodd"
                 />
               </svg>
-            </button>
+            </button> */}
           </nav>
           {children}
         </ClientProviders>
