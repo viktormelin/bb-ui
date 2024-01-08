@@ -1,9 +1,9 @@
 import FeatureList from '@/components/FeatureList';
-import Image from 'next/image';
+import Button from '@/components/ui/Button';
 
 const HomePage = () => {
   return (
-    <main className="bg-hero-image bg-no-repeat bg-cover text-white p-4">
+    <main className="text-white p-4">
       <section className="h-screen w-full flex flex-col items-center justify-center">
         <header>
           <h1 className="text-4xl font-medium tracking-tight mb-4">
@@ -16,9 +16,7 @@ const HomePage = () => {
           with roommates, a dinner with friends, or shared vacation costs,
           Billbuddies makes it simple.
         </p>
-        <button className="mt-16 w-full inline-flex justify-center rounded-xl py-3 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors bg-brand-purple-normal text-white hover:bg-brand-purple-darker active:bg-brand-purple-dark active:text-white/80">
-          Get Started today
-        </button>
+        <Button className="mt-16 ">Get Started today</Button>
       </section>
       <section className="min-h-screen w-full flex flex-col items-center">
         <header className="mb-4">
