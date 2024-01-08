@@ -1,9 +1,10 @@
 import FeatureList from '@/components/FeatureList';
 import Button from '@/components/ui/Button';
+import Link from 'next/link';
 
 const HomePage = () => {
   return (
-    <main className="text-white p-4">
+    <main className="p-4">
       <section className="h-screen w-full flex flex-col items-center justify-center">
         <header>
           <h1 className="text-4xl font-medium tracking-tight mb-4">
@@ -16,7 +17,9 @@ const HomePage = () => {
           with roommates, a dinner with friends, or shared vacation costs,
           Billbuddies makes it simple.
         </p>
-        <Button className="mt-16 ">Get Started today</Button>
+        <Link href="/authenticate" className="w-full">
+          <Button className="mt-16">Get Started today</Button>
+        </Link>
       </section>
       <section className="min-h-screen w-full flex flex-col items-center">
         <header className="mb-4">
@@ -26,20 +29,6 @@ const HomePage = () => {
           <FeatureList />
         </header>
       </section>
-      <footer className="mt-16 w-full flex flex-col items-center">
-        <a
-          className="py-3 px-3 text-sm uppercase tracking-tigth"
-          href="/contact"
-        >
-          Contact Us
-        </a>
-        <a
-          className="py-3 px-3 text-sm uppercase tracking-tigth"
-          href="/contact"
-        >
-          Privacy Policy & Terms of Service
-        </a>
-      </footer>
     </main>
   );
 };
