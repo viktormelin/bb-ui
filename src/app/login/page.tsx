@@ -10,7 +10,7 @@ const LoginPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (token) router.push('/');
+    if (token) router.push('/dashboard');
   }, [token]);
 
   return <Authorizer />;
