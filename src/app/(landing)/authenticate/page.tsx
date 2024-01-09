@@ -1,11 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import Button from '@/components/ui/Button';
 import { useAuthorizer } from '@authorizerdev/authorizer-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const AuthPage = () => {
-  const { authorizerRef } = useAuthorizer();
+  const { authorizerRef, token } = useAuthorizer();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (token) router.push('/dashboard');
+  }, [token]);
 
   const oauthLoginClick = (provider: string) => {
     authorizerRef.oauthLogin(provider);
