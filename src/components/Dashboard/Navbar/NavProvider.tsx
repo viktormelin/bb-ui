@@ -22,7 +22,7 @@ export const dashboardLinks = [
 ];
 
 const NavProvider = () => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [width, setWidth] = useState<number>(0);
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
