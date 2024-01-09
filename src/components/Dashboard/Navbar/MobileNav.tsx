@@ -4,7 +4,6 @@ import { cn } from '@/lib/clientUtils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { dashboardLinks } from './NavProvider';
-import Image from 'next/image';
 import { RectangleGroupIcon } from '@heroicons/react/24/solid';
 import { BanknotesIcon } from '@heroicons/react/24/solid';
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
@@ -32,7 +31,7 @@ const MobileNav = () => {
         className={cn(
           'p-3 rounded-lg transition-all',
           isCurrentPage(pathname, dashboardLinks[0].href)
-            ? 'text-brand-purple-normal border-b shadow-md'
+            ? 'text-brand-purple-normal border-b border border-brand-purple-normal'
             : 'hover:text-brand-purple-normal',
         )}
       >
@@ -43,7 +42,7 @@ const MobileNav = () => {
         className={cn(
           'p-3 rounded-lg transition-all',
           isCurrentPage(pathname, dashboardLinks[1].href)
-            ? 'text-brand-purple-normal shadow-md'
+            ? 'text-brand-purple-normal border border-brand-purple-normal'
             : 'hover:text-brand-purple-normal',
         )}
       >
@@ -54,7 +53,7 @@ const MobileNav = () => {
         className={cn(
           'p-3 rounded-lg transition-all bg-brand-purple-normal text-white',
           isCurrentPage(pathname, dashboardLinks[2].href)
-            ? 'text-brand-purple-normal shadow-md'
+            ? 'border border-white'
             : 'hover:text-neutral-400',
         )}
       >
@@ -65,7 +64,7 @@ const MobileNav = () => {
         className={cn(
           'p-3 rounded-lg transition-all',
           isCurrentPage(pathname, dashboardLinks[3].href)
-            ? 'text-brand-purple-normal shadow-md'
+            ? 'text-brand-purple-normal border border-brand-purple-normal'
             : 'hover:text-brand-purple-normal',
         )}
       >
@@ -76,7 +75,7 @@ const MobileNav = () => {
         className={cn(
           'p-3 rounded-lg transition-all',
           isCurrentPage(pathname, dashboardLinks[4].href)
-            ? 'text-brand-purple-normal shadow-md'
+            ? 'text-brand-purple-normal border border-brand-purple-normal'
             : 'hover:text-brand-purple-normal',
         )}
       >
