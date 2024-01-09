@@ -36,7 +36,7 @@ const AuthPage = () => {
         >
           <Image
             className=""
-            src="/images/google_icon.png"
+            src="/icons/google_icon.png"
             width={16}
             height={16}
             alt="Google"
@@ -51,7 +51,7 @@ const AuthPage = () => {
         >
           <Image
             className=""
-            src="/images/apple_icon.svg"
+            src="/icons/apple_icon.svg"
             width={16}
             height={16}
             alt="Apple"
