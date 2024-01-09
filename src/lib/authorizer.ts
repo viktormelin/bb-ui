@@ -1,3 +1,4 @@
+import { IUserProfile } from '@/types/IUser';
 import { cookies } from 'next/headers';
 
 export const generateAuthHeaders = async () => {
@@ -19,14 +20,12 @@ export const validateUser = async () => {
   return false;
 };
 
-export const getUserData = async () => {
+export const getUserData = async (): Promise<IUserProfile> => {
   const headers = await generateAuthHeaders();
   const response = await fetch(`${process.env.API_ROUTE}/users/me`, {
     headers,
     cache: 'no-store',
   });
 
-  // console.log(await response.json());
-
-  return true;
+  return await response.json();
 };
