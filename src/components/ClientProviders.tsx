@@ -10,6 +10,8 @@ const onStateChangeCallback = async ({
 }: {
   token: AuthToken | null;
 }) => {
+  if (!token) return;
+
   await fetch('/api/auth/session', {
     method: 'POST',
     body: JSON.stringify(token),
