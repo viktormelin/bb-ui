@@ -1,7 +1,7 @@
 'use client';
 
+import { authConfig } from '@/lib/clientUtils';
 import type { AuthToken } from '@authorizerdev/authorizer-js';
-import { authConfig } from '@/lib/authorizer';
 import { AuthorizerProvider } from '@authorizerdev/authorizer-react';
 import { ReactNode } from 'react';
 
