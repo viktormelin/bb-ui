@@ -25,7 +25,7 @@ const MobileNav = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full flex items-center justify-between p-4 border-t border-neutral-200">
+    <nav className="w-full flex items-center justify-between p-4 shadow-inner bg-white border-t border-neutral-200">
       <Link
         href={dashboardLinks[0].href}
         className={cn(

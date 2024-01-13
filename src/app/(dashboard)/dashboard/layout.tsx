@@ -4,6 +4,7 @@ import { Open_Sans } from 'next/font/google';
 import { redirect } from 'next/navigation';
 import '../../../styles/globals.css';
 import NavProvider from '@/components/Dashboard/Navbar/NavProvider';
+import { cn } from '@/lib/clientUtils';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -18,9 +19,9 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en">
-      <body className={openSans.className}>
+      <body className={cn(openSans.className, 'flex flex-col h-screen')}>
         <ClientProviders>
-          {children}
+          <main className="p-4 flex-1 overflow-auto">{children}</main>
           <NavProvider />
         </ClientProviders>
       </body>
