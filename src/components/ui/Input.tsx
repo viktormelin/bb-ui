@@ -3,11 +3,12 @@ import { VariantProps, cva } from 'class-variance-authority';
 import { InputHTMLAttributes } from 'react';
 
 const inputVariants = cva(
-  'border rounded-lg p-3 text-sm focus-visible:outline-brand-purple-normal',
+  'rounded-lg p-3 text-sm focus-visible:outline-brand-purple-normal',
   {
     variants: {
       variant: {
-        primary: 'border-neutral-400',
+        primary: 'border border-neutral-400',
+        transparent: 'bg-transparent',
       },
     },
     defaultVariants: {
