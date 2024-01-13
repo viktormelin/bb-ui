@@ -11,7 +11,7 @@ const DashboardPage = async () => {
   const userData = await getUserData();
 
   return (
-    <main className="p-4">
+    <>
       <section className="w-full">
         <header>
           <Text type="h1">Hi {userData.given_name}</Text>
@@ -52,7 +52,7 @@ const DashboardPage = async () => {
           </li>
         </ul>
       </section>
-    </main>
+    </>
   );
 };
 
