@@ -5,6 +5,7 @@ export const generateAuthHeaders = async () => {
   const nextCookies = cookies();
   const token = nextCookies.get('authorizer-client-next')?.value;
   const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
   headers.append('Authorization', `Bearer ${token}`);
   return headers;
 };
