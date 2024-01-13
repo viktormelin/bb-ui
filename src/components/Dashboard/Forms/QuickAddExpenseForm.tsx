@@ -6,13 +6,12 @@ import ComboBox, { IComboBoxData } from '@/components/ui/ComboBox';
 import Input from '@/components/ui/Input';
 import MultiBox from '@/components/ui/MultiBox';
 import Text from '@/components/ui/Text';
-import { formatCurrency } from '@/lib/currency';
 import { createGroup } from '@/lib/groups';
 import { IUserGroup } from '@/types/Groups';
 import { IUserProfile } from '@/types/User';
 import { useAuthorizer } from '@authorizerdev/authorizer-react';
 import { MinusCircleIcon } from '@heroicons/react/24/solid';
-import { FormEvent, MouseEventHandler, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 interface IProps {
   groups: IUserGroup[];
