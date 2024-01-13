@@ -6,6 +6,8 @@ import ComboBox, { IComboBoxData } from '@/components/ui/ComboBox';
 import Input from '@/components/ui/Input';
 import MultiBox from '@/components/ui/MultiBox';
 import Text from '@/components/ui/Text';
+import { formatCurrency } from '@/lib/currency';
+import { createGroup } from '@/lib/groups';
 import { IUserGroup } from '@/types/Groups';
 import { IUserProfile } from '@/types/User';
 import { useAuthorizer } from '@authorizerdev/authorizer-react';
@@ -29,6 +31,10 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
   const [selectedGroup, setSelectedGroup] = useState<string>(defaultGroup);
   const [selectedFriends, setSelectedFriends] = useState<IComboBoxData[]>([]);
 
+  const [expenseName, setExpenseName] = useState('');
+  const [expenseAmount, setExpenseAmount] = useState('');
+  const [creatingGroup, setCreatingGroup] = useState(false);
+
   useEffect(() => {
     if (user && !loading) {
       setSelectedFriends([
@@ -40,8 +46,17 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
     }
   }, [loading]);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setCreatingGroup(true);
+    const body = {
+      group: selectedGroup,
+      users: selectedFriends,
+      expense: { name: expenseName, money_total: expenseAmount },
+    };
+
+    createGroup(body);
+    setCreatingGroup(false);
   };
 
   const handleSelectNewFriend = (values: IComboBoxData[]) => {
@@ -81,8 +96,17 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
         selected={selectedFriends}
         setSelected={handleSelectNewFriend}
       />
-      <Input label="Expense name" />
-      <Input label="Expense total amount (SEK)" type="number" />
+      <Input
+        label="Expense name"
+        value={expenseName}
+        onChange={(e) => setExpenseName(e.target.value)}
+      />
+      <Input
+        label="Expense total amount (SEK)"
+        type="number"
+        value={expenseAmount}
+        onChange={(e) => setExpenseAmount(e.target.value)}
+      />
       <ul className="flex flex-col gap-2 my-4 p-2 bg-neutral-100 rounded-lg">
         <Text variant="h3">Users</Text>
         {selectedFriends.map((item) => (
@@ -109,7 +133,7 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
           </li>
         ))}
       </ul>
-      <Button>Create expense</Button>
+      <Button disabled={creatingGroup}>Create expense</Button>
     </form>
   );
 };
