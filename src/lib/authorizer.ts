@@ -1,4 +1,4 @@
-import { IUserProfile } from '@/types/IUser';
+import { IUserProfile } from '@/types/User';
 import { cookies } from 'next/headers';
 
 export const generateAuthHeaders = async () => {
@@ -11,7 +11,7 @@ export const generateAuthHeaders = async () => {
 
 export const validateUser = async () => {
   const headers = await generateAuthHeaders();
-  const response = await fetch(`${process.env.API_ROUTE}/users/me`, {
+  const response = await fetch(`${process.env.API_ROUTE}/users/validate`, {
     headers,
     cache: 'no-store',
   });
