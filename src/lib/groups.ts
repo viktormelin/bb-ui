@@ -25,7 +25,7 @@ export const createGroup = async (data: any) => {
   const body = await response.json();
 
   if (response.ok) {
-    redirect(`/dashboard/expenses/${body.group.id}`);
+    redirect(`/dashboard/groups/${body.group.id}`);
   } else {
     console.error(body.error);
   }
