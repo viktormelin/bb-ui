@@ -1,8 +1,32 @@
+export interface IGroupUser {
+  id: string;
+  role: string;
+  authorizer_usersId: string;
+  groupsId?: string;
+}
+
+export interface IGroupExpenses {
+  id: string;
+  name: string;
+  description?: string;
+  expense_total: number;
+  groupsId: string;
+}
+
+export interface IGroupExpenseSplits {
+  id: string;
+  money_total: number;
+  money_share: number;
+  expensesId: string;
+  authorizer_usersId: string;
+  group_usersId: string;
+}
 export interface IGroup {
   id: string;
   name: string;
-  users?: any;
-  expenses?: any;
+  invite_link?: string;
+  users?: IGroupUser[];
+  expenses?: IGroupExpenses[];
 }
 
 export interface IUserGroup {
@@ -11,5 +35,5 @@ export interface IUserGroup {
   authorizer_usersId: string;
   groupsId: string;
   groups: IGroup;
-  expense_splits?: any;
+  expense_splits?: IGroupExpenseSplits[];
 }

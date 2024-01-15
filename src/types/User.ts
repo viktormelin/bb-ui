@@ -1,3 +1,5 @@
+import { IGroupUser } from './Groups';
+
 export interface IUserProfile {
   id: string;
   email: string;
@@ -18,12 +20,7 @@ export interface IUserProfile {
   updated_at: number;
   is_multi_factor_auth_enabled?: boolean;
   app_data: any;
-  group_users: {
-    id: string;
-    role: string;
-    authorizer_usersId: string;
-    groupsId: string | null;
-  }[];
+  group_users: IGroupUser[];
   friends: {
     user: {
       id: string;
