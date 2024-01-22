@@ -2,12 +2,12 @@
 
 import { redirect } from 'next/navigation';
 import { generateAuthHeaders } from './authorizer';
+import { IGroup } from '@/types/Groups';
 
 export const getUserGroups = async () => {
   const headers = await generateAuthHeaders();
   const response = await fetch(`${process.env.API_ROUTE}/groups`, {
     headers,
-    cache: 'no-store',
   });
 
   if (response.ok) return await response.json();
@@ -29,4 +29,28 @@ export const createGroup = async (data: any) => {
   } else {
     console.error(body.error);
   }
+};
+
+interface GroupResponse {
+  group: IGroup;
+}
+export const getGroupFromId = async (id: string) => {
+  const headers = await generateAuthHeaders();
+  const response = await fetch(`${process.env.API_ROUTE}/groups/${id}`, {
+    headers,
+  });
+
+  return (await response.json()) as Promise<GroupResponse>;
+};
+
+export const joinGroup = async (id: string) => {
+  const headers = await generateAuthHeaders();
+  const response = await fetch(`${process.env.API_ROUTE}/groups/join/${id}`, {
+    method: 'POST',
+    headers,
+  });
+
+  console.log(response);
+
+  return { data: await response.json(), status: response.status };
 };
