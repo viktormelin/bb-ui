@@ -14,7 +14,6 @@ export const validateUser = async () => {
   const headers = await generateAuthHeaders();
   const response = await fetch(`${process.env.API_ROUTE}/users/validate`, {
     headers,
-    cache: 'no-store',
   });
 
   if (response.ok) return true;
@@ -25,8 +24,8 @@ export const getUserData = async (): Promise<IUserProfile> => {
   const headers = await generateAuthHeaders();
   const response = await fetch(`${process.env.API_ROUTE}/users/me`, {
     headers,
-    cache: 'no-store',
   });
 
-  return await response.json();
+  const { user } = await response.json();
+  return user;
 };
