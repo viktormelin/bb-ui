@@ -1,4 +1,4 @@
-import { IGroupExpenses } from '@/types/Groups';
+import { IGroupExpenses } from '@/types/Expense';
 
 export const formatCurrency = (num: number) =>
   new Intl.NumberFormat('se-SE', { style: 'currency', currency: 'SEK' }).format(
