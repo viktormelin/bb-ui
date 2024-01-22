@@ -12,7 +12,7 @@ const fetchGroups = async () => {
   return groups as IUserGroup[];
 };
 
-const page = async () => {
+const GroupsPage = async () => {
   const groups = await fetchGroups();
 
   return (
@@ -52,4 +52,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default GroupsPage;
