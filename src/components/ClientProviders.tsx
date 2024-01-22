@@ -1,9 +1,11 @@
 'use client';
 
+import useUrl from '@/hooks/useUrl';
 import { authConfig } from '@/lib/clientUtils';
 import type { AuthToken } from '@authorizerdev/authorizer-js';
 import { AuthorizerProvider } from '@authorizerdev/authorizer-react';
-import { ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
+import { ReactNode, useEffect } from 'react';
 
 const onStateChangeCallback = async ({
   token,
@@ -20,6 +22,16 @@ const onStateChangeCallback = async ({
 };
 
 const ClientProviders = ({ children }: { children: ReactNode }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const hasJoinToken = sessionStorage.getItem('join');
+    if (hasJoinToken) {
+      const inviteUrl = '/join?token=' + hasJoinToken;
+      router.push(inviteUrl);
+    }
+  }, []);
+
   return (
     <AuthorizerProvider
       config={authConfig}
