@@ -2,9 +2,14 @@ import { IExpenseSplit, IGroupExpenses } from './Expense';
 
 export interface IGroupUser {
   id: string;
-  role: string;
+  group_role: string;
   authorizer_usersId: string;
   groupsId?: string;
+  auth_user: {
+    given_name?: string;
+    family_name?: string;
+    picture?: string;
+  };
 }
 export interface IGroup {
   id: string;
@@ -15,6 +20,7 @@ export interface IGroup {
 }
 
 export interface IUserGroup {
+  [x: string]: any;
   id: string;
   role: string;
   authorizer_usersId: string;

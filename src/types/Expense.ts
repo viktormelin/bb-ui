@@ -1,7 +1,7 @@
 export interface IExpenseSplit {
   id: string;
-  money_total: number;
-  money_share: number;
+  percentage: number;
+  amount: number;
   expensesId: string;
   group_usersId: string;
   expense: IGroupExpenses;
@@ -13,4 +13,5 @@ export interface IGroupExpenses {
   description?: string;
   expense_total: number;
   groupsId: string;
+  group_usersId: string;
 }
