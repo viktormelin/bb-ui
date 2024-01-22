@@ -4,10 +4,11 @@
 import Button from '@/components/ui/Button';
 import { useAuthorizer } from '@authorizerdev/authorizer-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 const AuthPage = () => {
+  const params = useSearchParams();
   const { authorizerRef, token } = useAuthorizer();
   const router = useRouter();
 
@@ -16,6 +17,14 @@ const AuthPage = () => {
   }, [token]);
 
   const oauthLoginClick = (provider: string) => {
+    console.log(params.get('token'), params.get('type'));
+
+    if (params.get('token') && params.get('type')) {
+      console.log('Setting values!');
+
+      sessionStorage.setItem(params.get('type')!, params.get('token')!);
+    }
+
     authorizerRef.oauthLogin(provider);
   };
 
@@ -57,6 +66,20 @@ const AuthPage = () => {
             alt="Apple"
           />
           <span>Continue with Apple</span>
+        </Button>
+        <Button
+          variant="neutral"
+          className="flex gap-3"
+          onClick={() => oauthLoginClick('github')}
+        >
+          <Image
+            className=""
+            src="/icons/github-mark.png"
+            width={16}
+            height={16}
+            alt="Apple"
+          />
+          <span>Continue with Github</span>
         </Button>
       </div>
     </main>
