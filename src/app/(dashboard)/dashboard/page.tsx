@@ -1,20 +1,34 @@
 import Text from '@/components/ui/Text';
 import { getUserData } from '@/lib/authorizer';
 import { formatCurrency } from '@/lib/currency';
+import { getUserExpenses } from '@/lib/expenses';
+import { IExpenseSplit } from '@/types/Expense';
 
 const mockData = {
   money_outstanding: 1235,
   money_owed: 311,
 };
 
+const fetchUserData = async () => {
+  return await getUserData();
+};
+
+const fetchExpenses = async () => {
+  const { expenses } = await getUserExpenses();
+  if (!expenses) return [];
+  return expenses as IExpenseSplit[];
+};
+
 const DashboardPage = async () => {
-  const userData = await getUserData();
+  const userData = fetchUserData();
+  const expensesData = fetchExpenses();
+  const [user, expenses] = await Promise.all([userData, expensesData]);
 
   return (
     <>
       <section className="w-full">
         <header>
-          <Text type="h1">Hi {userData.given_name}</Text>
+          <Text type="h1">Hi {user.given_name}</Text>
           <Text>View your current balance and latest transactions</Text>
         </header>
         <div className="flex flex-col gap-3 my-4">
