@@ -8,9 +8,6 @@ import React from 'react';
 const fetchExpenses = async () => {
   const { expenses } = await getUserExpenses();
   if (!expenses) return [];
-
-  console.log(expenses);
-
   return expenses as IExpenseSplit[];
 };
 
@@ -56,11 +53,11 @@ const page = async () => {
                   <div className="text-right">
                     <Text variant="xs">
                       {formatCurrency(
-                        expense.money_total / expense.money_share,
+                        expense.amount * (expense.percentage / 100),
                       )}
                     </Text>
                     <Text variant="xs" className="mb-0">
-                      Share: {expense.money_share * 100}%
+                      Share: {expense.percentage}%
                     </Text>
                   </div>
                 </li>
