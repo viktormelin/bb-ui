@@ -8,8 +8,8 @@ const fetchGroup = async (id: string) => {
   const data = await getGroupFromId(id);
   return data.group;
 };
-const GroupPage = async ({ params }: { params: { slug: string } }) => {
-  const group = await fetchGroup(params.slug);
+const GroupPage = async ({ params }: { params: { group: string } }) => {
+  const group = await fetchGroup(params.group);
 
   return (
     <>
