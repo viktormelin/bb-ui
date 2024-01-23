@@ -26,9 +26,11 @@ export interface InputProps
 const Input = ({ label, className, variant, ...props }: InputProps) => {
   return (
     <label className="flex flex-col">
-      <span className="block mb-1 text-xs font-medium text-neutral-400">
-        {label}
-      </span>
+      {label && (
+        <span className="block mb-1 text-xs font-medium text-neutral-400">
+          {label}
+        </span>
+      )}
       <input className={cn(inputVariants({ variant, className }))} {...props} />
     </label>
   );
