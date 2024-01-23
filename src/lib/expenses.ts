@@ -45,3 +45,24 @@ export const addUserToExpense = async (
 
   return response.status;
 };
+
+export const editExpenseSplit = async (
+  userId: string,
+  groupId: string,
+  expenseId: string,
+  updatedSplit: number | string,
+) => {
+  const headers = await generateAuthHeaders();
+  const response = await fetch(`${process.env.API_ROUTE}/expenses/edit/split`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      targetId: userId,
+      groupId,
+      expenseId,
+      updatedSplit,
+    }),
+  });
+
+  return response.status;
+};
