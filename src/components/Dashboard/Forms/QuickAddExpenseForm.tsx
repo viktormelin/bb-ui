@@ -22,7 +22,7 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
 
   const mappedGroups: IComboBoxData[] = groups.map((group) => ({
     id: group.id,
-    name: group.name,
+    name: group.groups.name,
   }));
 
   const defaultGroup = mappedGroups.length > 0 ? mappedGroups[0].name : '';
