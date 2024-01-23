@@ -1,4 +1,6 @@
 import AddMemberToExpense from '@/components/Dashboard/Forms/AddMemberToExpense';
+import UpdateMemberExpenseShare from '@/components/Dashboard/Forms/UpdateMemberExpenseShare';
+import Input from '@/components/ui/Input';
 import Text from '@/components/ui/Text';
 import { calculateTotal, formatCurrency } from '@/lib/currency';
 import { getExpenseById } from '@/lib/expenses';
@@ -36,18 +38,23 @@ const GroupPage = async ({ params }: { params: { expense: string } }) => {
               {expense.expense_splits.map((split) => (
                 <li
                   key={split.id}
-                  className="rounded-lg w-full flex justify-between items-center bg-neutral-100 p-2"
+                  className="rounded-lg w-full flex items-center bg-neutral-100 p-2"
                 >
-                  <div>
+                  <div className="w-full">
                     <Text>
                       {split.group_user.auth_user.given_name}{' '}
                       {split.group_user.auth_user.family_name}
                     </Text>
                   </div>
-                  <div className="text-right">
-                    <Text variant="xs">{formatCurrency(split.amount)}</Text>
+                  <div className="text-right flex flex-col gap-2">
+                    <UpdateMemberExpenseShare
+                      userId={split.group_usersId}
+                      groupId={expense.groupsId}
+                      expenseId={split.expensesId}
+                      value={split.percentage}
+                    />
                     <Text variant="xs" className="mb-0">
-                      Share: {split.percentage}%
+                      {formatCurrency(split.amount)}
                     </Text>
                   </div>
                 </li>
