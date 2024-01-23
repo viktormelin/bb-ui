@@ -2,8 +2,10 @@
 
 import Button from '@/components/ui/Button';
 import Text from '@/components/ui/Text';
+import { clearCacheByPath } from '@/lib/cache';
 import { addUserToExpense } from '@/lib/expenses';
 import { IGroupUser } from '@/types/Groups';
+import { useState } from 'react';
 
 interface IProps {
   members?: IGroupUser[];
@@ -13,8 +15,20 @@ interface IProps {
 const AddMemberToExpense = ({ members, expense }: IProps) => {
   if (!members || !expense) return;
 
+  const [isAdding, setIsAdding] = useState(false);
+
   const onClick = async (memberId: string, groupsId: string) => {
+    if (isAdding) return;
+
+    setIsAdding(true);
     const response = await addUserToExpense(memberId, groupsId, expense);
+    if (response === 201)
+      clearCacheByPath(
+        '/(dashboard)/dashboard/groups/[group]/expenses/[expense]',
+        'page',
+      );
+
+    setIsAdding(false);
   };
 
   return (
@@ -28,6 +42,7 @@ const AddMemberToExpense = ({ members, expense }: IProps) => {
             {member.auth_user.given_name} {member.auth_user.family_name}
           </Text>
           <Button
+            disabled={isAdding}
             className="w-fit"
             variant="neutral"
             onClick={() => onClick(member.id, member.groupsId)}
