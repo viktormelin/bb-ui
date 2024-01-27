@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 export const authConfig = {
   authorizerURL: 'https://auth.billbuddies.app',
   // redirectURL: 'http://localhost:3001/dashboard',
-  redirectURL: 'https://billbuddies.app/dashboard',
+  redirectURL: 'https://bb-ui-staging.up.railway.app/dashboard',
   clientID: '2df42098-a689-4c65-97db-74ed796e5beb',
 };
 
