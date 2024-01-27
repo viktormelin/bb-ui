@@ -41,6 +41,7 @@ const page = async () => {
           <ul className="flex flex-col gap-2 my-4">
             {expenses.map((expense) => (
               <Link
+                key={expense.id}
                 href={`/dashboard/groups/${expense.expense.groupsId}/expense/${expense.expensesId}`}
               >
                 <li
