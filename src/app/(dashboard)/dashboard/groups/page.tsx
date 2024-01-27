@@ -24,7 +24,10 @@ const GroupsPage = async () => {
         {groups.length > 0 ? (
           <ul className="flex flex-col gap-2 my-4">
             {groups.map((group) => (
-              <Link href={`/dashboard/groups/${group.groups.id}`}>
+              <Link
+                href={`/dashboard/groups/${group.groups.id}`}
+                key={group.id}
+              >
                 <li
                   key={group.groups.id}
                   className="rounded-lg w-full flex justify-between items-center bg-neutral-100 p-2"

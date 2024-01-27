@@ -24,6 +24,7 @@ const GroupPage = async ({ params }: { params: { group: string } }) => {
           <ul className="flex flex-col gap-2 my-4">
             {group.expenses.map((expense) => (
               <Link
+                key={expense.id}
                 href={`/dashboard/groups/${expense.groupsId}/expense/${expense.id}`}
               >
                 <li
