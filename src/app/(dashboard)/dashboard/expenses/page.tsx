@@ -52,11 +52,7 @@ const page = async () => {
                     <Text>{expense.expense.name}</Text>
                   </div>
                   <div className="text-right">
-                    <Text variant="xs">
-                      {formatCurrency(
-                        expense.amount * (expense.percentage / 100),
-                      )}
-                    </Text>
+                    <Text variant="xs">{formatCurrency(expense.amount)}</Text>
                     <Text variant="xs" className="mb-0">
                       Share: {expense.percentage}%
                     </Text>
