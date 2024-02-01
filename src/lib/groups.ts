@@ -54,3 +54,18 @@ export const joinGroup = async (id: string) => {
 
   return { data: await response.json(), status: response.status };
 };
+
+export const calculateGroupSplits = async (groupId: string) => {
+  const headers = await generateAuthHeaders();
+  const response = await fetch(
+    `${process.env.API_ROUTE}/groups/calculate/${groupId}`,
+    {
+      method: 'POST',
+      headers,
+    },
+  );
+
+  console.log(response);
+
+  return { data: await response.json(), status: response.status };
+};

@@ -2,6 +2,7 @@
 
 import { IGroupExpenseWithPayer } from '@/types/Expense';
 import { generateAuthHeaders } from './authorizer';
+import { redirect } from 'next/navigation';
 
 export const getUserExpenses = async () => {
   const headers = await generateAuthHeaders();
@@ -10,7 +11,7 @@ export const getUserExpenses = async () => {
   });
 
   if (response.ok) {
-    const body = (await response.json()) ?? [];
+    const body = await response.json();
     return body;
   }
 
@@ -65,4 +66,42 @@ export const editExpenseSplit = async (
   });
 
   return response.status;
+};
+
+export const createExpense = async (data: any) => {
+  console.log(data);
+
+  const headers = await generateAuthHeaders();
+  const response = await fetch(`${process.env.API_ROUTE}/expenses/new`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data),
+  });
+
+  const body = await response.json();
+
+  if (response.ok) {
+    redirect(`/dashboard/expenses/${body.expense.id}`);
+  } else {
+    console.error(body.error);
+  }
+};
+
+export const removeExpense = async (expenseId: any) => {
+  const headers = await generateAuthHeaders();
+  const response = await fetch(`${process.env.API_ROUTE}/expenses/remove`, {
+    method: 'DELETE',
+    headers,
+    body: JSON.stringify({ expenseId }),
+  });
+
+  const body = await response.json();
+
+  console.log(response, body);
+
+  // if (response.ok) {
+  //   redirect(`/dashboard/expenses/${body.expense.id}`);
+  // } else {
+  //   console.error(body.error);
+  // }
 };

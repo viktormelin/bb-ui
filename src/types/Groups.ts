@@ -32,3 +32,9 @@ export interface IUserGroup {
     family_name?: string;
   };
 }
+
+export interface ISplit {
+  from: string;
+  to: string;
+  amount: number;
+}

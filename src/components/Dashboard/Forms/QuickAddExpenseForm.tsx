@@ -4,6 +4,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import Button from '@/components/ui/Button';
 import ComboBox, { IComboBoxData } from '@/components/ui/ComboBox';
 import Input from '@/components/ui/Input';
+import { createExpense } from '@/lib/expenses';
 import { createGroup } from '@/lib/groups';
 import { IUserGroup } from '@/types/Groups';
 import { IUserProfile } from '@/types/User';
@@ -21,7 +22,7 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
   // console.log(groups);
 
   const mappedGroups: IComboBoxData[] = groups.map((group) => ({
-    id: group.id,
+    id: group.groups.id,
     name: group.groups.name,
   }));
 
@@ -34,12 +35,25 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCreatingGroup(true);
-    const body = {
-      group: selectedGroup,
-      expense: { name: expenseName, expense_total: Number(expenseAmount) },
-    };
 
-    createGroup(body);
+    const isNewGroup = mappedGroups.some((v) => v.name === selectedGroup);
+
+    if (isNewGroup) {
+      const body = {
+        group: selectedGroup,
+        expense: { name: expenseName, expense_total: Number(expenseAmount) },
+      };
+
+      createGroup(body);
+    } else {
+      const body = {
+        group: selectedGroup,
+        expense: { name: expenseName, expense_total: Number(expenseAmount) },
+      };
+
+      createExpense(body);
+    }
+
     setCreatingGroup(false);
   };
 
