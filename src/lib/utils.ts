@@ -12,3 +12,11 @@ export const authConfig = {
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
+
+export const getServerVersion = async () => {
+  const response = await fetch(`${process.env.API_ROUTE}/version`, {
+    method: 'GET',
+  });
+
+  return response.text;
+};

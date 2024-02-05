@@ -3,7 +3,7 @@ import SettleExpenseSplitButton from '@/components/Dashboard/Forms/SettleExpense
 import InviteButton from '@/components/Dashboard/InviteButton';
 import Button from '@/components/ui/Button';
 import Text from '@/components/ui/Text';
-import { cn } from '@/lib/clientUtils';
+import { cn } from '@/lib/utils';
 import { calculateTotal, formatCurrency } from '@/lib/currency';
 import { calculateGroupSplits, getGroupFromId } from '@/lib/groups';
 import { ISplit } from '@/types/Groups';

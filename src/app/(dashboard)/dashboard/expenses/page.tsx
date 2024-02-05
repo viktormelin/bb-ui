@@ -1,5 +1,5 @@
 import Text from '@/components/ui/Text';
-import { cn } from '@/lib/clientUtils';
+import { cn } from '@/lib/utils';
 import { calculateTotal, formatCurrency } from '@/lib/currency';
 import { getUserExpenses } from '@/lib/expenses';
 import { IExpenseSplit } from '@/types/Expense';
