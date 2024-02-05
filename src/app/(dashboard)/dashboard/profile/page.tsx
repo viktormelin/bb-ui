@@ -24,7 +24,7 @@ const ProfilePage = async () => {
         </div>
         <div className="flex flex-col items-center justify-center mt-16 text-center">
           <Text variant="xs">
-            Client version: {process.env.NEXT_PUBLIC_APP_VERSION}
+            Client version: {process.env.npm_package_version}
           </Text>
           <Text variant="xs">Server version: {serverVersion}</Text>
           <Text variant="xs" className="mt-2">
