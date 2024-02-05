@@ -13,9 +13,9 @@ interface IProps {
 }
 
 const AddMemberToExpense = ({ members, expense }: IProps) => {
-  if (!members || !expense) return;
-
   const [isAdding, setIsAdding] = useState(false);
+
+  if (!members || !expense) return;
 
   const onClick = async (memberId: string, groupsId: string) => {
     if (isAdding) return;
