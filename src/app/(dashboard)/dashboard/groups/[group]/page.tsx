@@ -98,7 +98,9 @@ const GroupPage = async ({ params }: { params: { group: string } }) => {
                 </Text>
               </li>
             ))}
-          <SettleExpenseSplitButton groupId={group.id} />
+          {calculatedSplits.data.length > 0 && (
+            <SettleExpenseSplitButton groupId={group.id} />
+          )}
         </ul>
       </section>
       <section>
