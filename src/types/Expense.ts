@@ -17,6 +17,7 @@ export interface IGroupExpenses {
   expense_total: number;
   groupsId: string;
   group_usersId: string;
+  settled: boolean;
 }
 
 export interface IGroupExpenseWithPayer extends IGroupExpenses {

@@ -50,8 +50,6 @@ export const joinGroup = async (id: string) => {
     headers,
   });
 
-  console.log(response);
-
   return { data: await response.json(), status: response.status };
 };
 
@@ -65,7 +63,18 @@ export const calculateGroupSplits = async (groupId: string) => {
     },
   );
 
-  console.log(response);
-
   return { data: await response.json(), status: response.status };
+};
+
+export const settleGroupExpenses = async (groupId: string) => {
+  const headers = await generateAuthHeaders();
+  const response = await fetch(
+    `${process.env.API_ROUTE}/groups/settle/${groupId}`,
+    {
+      method: 'GET',
+      headers,
+    },
+  );
+
+  return response.status;
 };
