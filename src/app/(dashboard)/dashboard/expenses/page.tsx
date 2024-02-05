@@ -1,4 +1,5 @@
 import Text from '@/components/ui/Text';
+import { cn } from '@/lib/utils';
 import { calculateTotal, formatCurrency } from '@/lib/currency';
 import { getUserExpenses } from '@/lib/expenses';
 import { IExpenseSplit } from '@/types/Expense';
@@ -10,23 +11,6 @@ const fetchExpenses = async () => {
   if (!expenses) return [];
   return expenses as IExpenseSplit[];
 };
-
-// [
-//   {
-//     id: 'clrf440yh0005sdcgjb1n4joe',
-//     money_total: 1250,
-//     money_share: 1,
-//     expensesId: 'clrf43yn50003sdcgqahha8kl',
-//     group_usersId: 'clrf43yn50002sdcgdikanxv5',
-//     expense: {
-//       id: 'clrf43yn50003sdcgqahha8kl',
-//       name: 'Expense 1',
-//       description: null,
-//       expense_total: 1250,
-//       groupsId: 'clrf43yn50000sdcgszmp1ueu'
-//     }
-//   }
-// ]
 
 const page = async () => {
   const expenses = await fetchExpenses();
@@ -49,9 +33,18 @@ const page = async () => {
                   className="rounded-lg w-full flex justify-between items-center bg-neutral-100 p-2"
                 >
                   <div>
-                    <Text>{expense.expense.name}</Text>
+                    <Text
+                      className={cn(expense.expense.settled && 'line-through')}
+                    >
+                      {expense.expense.name}
+                    </Text>
                   </div>
-                  <div className="text-right">
+                  <div
+                    className={cn(
+                      'text-right',
+                      expense.expense.settled && 'line-through',
+                    )}
+                  >
                     <Text variant="xs">{formatCurrency(expense.amount)}</Text>
                     <Text variant="xs" className="mb-0">
                       Share: {expense.percentage}%

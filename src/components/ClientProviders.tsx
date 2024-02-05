@@ -1,7 +1,7 @@
 'use client';
 
 import useUrl from '@/hooks/useUrl';
-import { authConfig } from '@/lib/clientUtils';
+import { authConfig } from '@/lib/utils';
 import type { AuthToken } from '@authorizerdev/authorizer-js';
 import { AuthorizerProvider } from '@authorizerdev/authorizer-react';
 import { useRouter } from 'next/navigation';

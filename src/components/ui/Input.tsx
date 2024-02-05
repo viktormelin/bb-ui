@@ -1,4 +1,4 @@
-import { cn } from '@/lib/clientUtils';
+import { cn } from '@/lib/utils';
 import { VariantProps, cva } from 'class-variance-authority';
 import { InputHTMLAttributes } from 'react';
 

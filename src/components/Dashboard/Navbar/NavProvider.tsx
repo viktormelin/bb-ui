@@ -24,9 +24,8 @@ export const dashboardLinks = [
 const NavProvider = () => {
   const [width, setWidth] = useState<number>(0);
 
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
+  const handleWindowSizeChange = () => setWidth(window.innerWidth);
+
   useEffect(() => {
     window.addEventListener('resize', handleWindowSizeChange);
     return () => {

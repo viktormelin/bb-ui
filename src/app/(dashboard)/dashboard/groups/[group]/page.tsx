@@ -1,5 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
+import SettleExpenseSplitButton from '@/components/Dashboard/Forms/SettleExpenseSplitButton';
 import InviteButton from '@/components/Dashboard/InviteButton';
+import Button from '@/components/ui/Button';
 import Text from '@/components/ui/Text';
+import { cn } from '@/lib/utils';
 import { calculateTotal, formatCurrency } from '@/lib/currency';
 import { calculateGroupSplits, getGroupFromId } from '@/lib/groups';
 import { ISplit } from '@/types/Groups';
@@ -9,6 +13,7 @@ const fetchGroup = async (id: string) => {
   const data = await getGroupFromId(id);
   return data.group;
 };
+
 const GroupPage = async ({ params }: { params: { group: string } }) => {
   const group = await fetchGroup(params.group);
   const calculatedSplits: { data: ISplit[] } = (
@@ -36,10 +41,15 @@ const GroupPage = async ({ params }: { params: { group: string } }) => {
                   className="rounded-lg w-full flex justify-between items-center bg-neutral-100 p-2"
                 >
                   <div>
-                    <Text>{expense.name}</Text>
+                    <Text className={cn(expense.settled && 'line-through')}>
+                      {expense.name}
+                    </Text>
                   </div>
                   <div className="text-right">
-                    <Text variant="xs" className="mb-0">
+                    <Text
+                      variant="xs"
+                      className={cn('mb-0', expense.settled && 'line-through')}
+                    >
                       {formatCurrency(expense.expense_total)}
                     </Text>
                   </div>
@@ -62,8 +72,8 @@ const GroupPage = async ({ params }: { params: { group: string } }) => {
                 key={index}
                 className="rounded-lg w-full flex justify-between items-center bg-neutral-100 p-2"
               >
-                <div>
-                  <Text>
+                <Text className="w-full mb-0">
+                  <span className="underline">
                     {
                       group.users?.find((v) => v.id === split.from)?.auth_user
                         .given_name
@@ -71,8 +81,10 @@ const GroupPage = async ({ params }: { params: { group: string } }) => {
                     {
                       group.users?.find((v) => v.id === split.from)?.auth_user
                         .family_name
-                    }{' '}
-                    is to pay{' '}
+                    }
+                  </span>{' '}
+                  is to pay{' '}
+                  <span className="underline">
                     {
                       group.users?.find((v) => v.id === split.to)?.auth_user
                         .given_name
@@ -80,12 +92,15 @@ const GroupPage = async ({ params }: { params: { group: string } }) => {
                     {
                       group.users?.find((v) => v.id === split.to)?.auth_user
                         .family_name
-                    }{' '}
-                    {formatCurrency(split.amount)}
-                  </Text>
-                </div>
+                    }
+                  </span>{' '}
+                  {formatCurrency(split.amount)}
+                </Text>
               </li>
             ))}
+          {calculatedSplits.data.length > 0 && (
+            <SettleExpenseSplitButton groupId={group.id} />
+          )}
         </ul>
       </section>
       <section>

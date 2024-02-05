@@ -4,7 +4,7 @@ import { Open_Sans } from 'next/font/google';
 import { redirect } from 'next/navigation';
 import '../../../styles/globals.css';
 import NavProvider from '@/components/Dashboard/Navbar/NavProvider';
-import { cn } from '@/lib/clientUtils';
+import { cn } from '@/lib/utils';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
