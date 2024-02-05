@@ -1,4 +1,4 @@
-name: 'Check linting'
+name: 'Check code quality'
 on: [push]
 
 jobs:
@@ -22,3 +22,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run prettier
+  test-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run test
