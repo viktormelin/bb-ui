@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "prettier --config .prettierrc --check ."
+    "prettier": "prettier --config .prettierrc --check .",
+    "test": "jest"
   },
   "dependencies": {
     "@authorizerdev/authorizer-react": "^1.2.0",
@@ -21,6 +22,8 @@
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.11",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -31,9 +34,11 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^27.6.1",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",
     "prettier": "^3.1.1",
     "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
