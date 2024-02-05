@@ -1,8 +1,8 @@
 import AddMemberToExpense from '@/components/Dashboard/Forms/AddMemberToExpense';
+import ResetSplitsButton from '@/components/Dashboard/Forms/ResetSplitsButton';
 import UpdateMemberExpenseShare from '@/components/Dashboard/Forms/UpdateMemberExpenseShare';
-import Input from '@/components/ui/Input';
 import Text from '@/components/ui/Text';
-import { calculateTotal, formatCurrency } from '@/lib/currency';
+import { formatCurrency } from '@/lib/currency';
 import { getExpenseById } from '@/lib/expenses';
 
 const fetchExpense = async (id: string) => {
@@ -59,6 +59,9 @@ const GroupPage = async ({ params }: { params: { expense: string } }) => {
                   </div>
                 </li>
               ))}
+              {expense.expense_splits.length > 0 && (
+                <ResetSplitsButton expenseId={expense.id} />
+              )}
             </ul>
           </section>
           <section>

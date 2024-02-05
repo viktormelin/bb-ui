@@ -87,7 +87,7 @@ export const createExpense = async (data: any) => {
   }
 };
 
-export const removeExpense = async (expenseId: any) => {
+export const removeExpense = async (expenseId: string) => {
   const headers = await generateAuthHeaders();
   const response = await fetch(`${process.env.API_ROUTE}/expenses/remove`, {
     method: 'DELETE',
@@ -104,4 +104,17 @@ export const removeExpense = async (expenseId: any) => {
   // } else {
   //   console.error(body.error);
   // }
+};
+
+export const resetExpense = async (expenseId: string) => {
+  const headers = await generateAuthHeaders();
+  const response = await fetch(
+    `${process.env.API_ROUTE}/expenses/reset/${expenseId}`,
+    {
+      method: 'GET',
+      headers,
+    },
+  );
+
+  return response.status;
 };
