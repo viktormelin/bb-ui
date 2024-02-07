@@ -26,9 +26,8 @@ const onStateChangeCallback = async ({
   });
 };
 
-const ClientProviders = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
-  const isMobile = useViewport();
 
   useEffect(() => {
     const hasJoinToken = sessionStorage.getItem('join');
@@ -43,6 +42,17 @@ const ClientProviders = ({ children }: { children: ReactNode }) => {
       config={authConfig}
       onStateChangeCallback={onStateChangeCallback}
     >
+      {children}
+    </AuthorizerProvider>
+  );
+};
+
+const ClientProviders = ({ children }: { children: ReactNode }) => {
+  const isMobile = useViewport();
+  const { currentPath } = useUrl();
+
+  return (
+    <AuthProvider>
       <body
         className={cn(
           'flex h-screen justify-center',
@@ -60,7 +70,7 @@ const ClientProviders = ({ children }: { children: ReactNode }) => {
         </main>
         <NavProvider />
       </body>
-    </AuthorizerProvider>
+    </AuthProvider>
   );
 };
 

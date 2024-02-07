@@ -1,10 +1,7 @@
 import ClientProviders from '@/components/ClientProviders';
 import { validateUser } from '@/lib/authorizer';
-import { Open_Sans } from 'next/font/google';
 import { redirect } from 'next/navigation';
 import '../../../styles/globals.css';
-import NavProvider from '@/components/Dashboard/Navbar/NavProvider';
-import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Next.js',

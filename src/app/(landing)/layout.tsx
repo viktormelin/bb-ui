@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import '../../styles/globals.css';
-import ClientProviders from '@/components/ClientProviders';
+import ClientProviders, { AuthProvider } from '@/components/ClientProviders';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -23,11 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-black text-white">
       <body className={cn(openSans.className, 'relative')}>
-        <ClientProviders>
+        <AuthProvider>
           <Navbar />
           {children}
           <Footer />
-        </ClientProviders>
+        </AuthProvider>
       </body>
     </html>
   );
