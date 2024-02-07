@@ -1,11 +1,16 @@
 'use client';
 
 import useUrl from '@/hooks/useUrl';
-import { authConfig } from '@/lib/utils';
+import { authConfig, cn } from '@/lib/utils';
 import type { AuthToken } from '@authorizerdev/authorizer-js';
 import { AuthorizerProvider } from '@authorizerdev/authorizer-react';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
+import NavProvider from './Dashboard/Navbar/NavProvider';
+import useViewport from '@/hooks/useViewport';
+import { Open_Sans } from 'next/font/google';
+
+const openSans = Open_Sans({ subsets: ['latin'] });
 
 const onStateChangeCallback = async ({
   token,
@@ -23,6 +28,7 @@ const onStateChangeCallback = async ({
 
 const ClientProviders = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
+  const isMobile = useViewport();
 
   useEffect(() => {
     const hasJoinToken = sessionStorage.getItem('join');
@@ -37,7 +43,23 @@ const ClientProviders = ({ children }: { children: ReactNode }) => {
       config={authConfig}
       onStateChangeCallback={onStateChangeCallback}
     >
-      {children}
+      <body
+        className={cn(
+          'flex h-screen justify-center',
+          openSans.className,
+          isMobile && 'flex-col',
+        )}
+      >
+        <main
+          className={cn(
+            'p-4 flex-1 overflow-auto',
+            !isMobile && 'order-1 w-full max-w-2xl',
+          )}
+        >
+          {children}
+        </main>
+        <NavProvider />
+      </body>
     </AuthorizerProvider>
   );
 };
