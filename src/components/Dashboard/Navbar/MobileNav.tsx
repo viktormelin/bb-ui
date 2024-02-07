@@ -35,7 +35,7 @@ const MobileNav = () => {
             : 'hover:text-brand-purple-normal',
         )}
       >
-        <RectangleGroupIcon className="w-6 h6" />
+        <RectangleGroupIcon name="Dashboard" className="w-6 h6" />
       </Link>
       <Link
         href={dashboardLinks[1].href}
@@ -46,7 +46,7 @@ const MobileNav = () => {
             : 'hover:text-brand-purple-normal',
         )}
       >
-        <BanknotesIcon className="w-6 h6" />
+        <BanknotesIcon name="Expenses" className="w-6 h6" />
       </Link>
       <Link
         href={dashboardLinks[2].href}
@@ -57,7 +57,7 @@ const MobileNav = () => {
             : 'hover:text-neutral-400',
         )}
       >
-        <PlusCircleIcon className="w-6 h6" />
+        <PlusCircleIcon name="Quick add" className="w-6 h6" />
       </Link>
       <Link
         href={dashboardLinks[3].href}
@@ -68,7 +68,7 @@ const MobileNav = () => {
             : 'hover:text-brand-purple-normal',
         )}
       >
-        <UserGroupIcon className="w-6 h6" />
+        <UserGroupIcon name="Groups" className="w-6 h6" />
       </Link>
       <Link
         href={dashboardLinks[4].href}
@@ -79,7 +79,7 @@ const MobileNav = () => {
             : 'hover:text-brand-purple-normal',
         )}
       >
-        <UserIcon className="w-6 h6" />
+        <UserIcon name="Profile" className="w-6 h6" />
       </Link>
     </nav>
   );
