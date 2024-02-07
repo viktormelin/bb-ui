@@ -7,6 +7,9 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    height: {
+      screen: '100dvh',
+    },
     extend: {
       colors: {
         'brand-purple-light': '#6E34BF',
