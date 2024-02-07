@@ -6,6 +6,8 @@ const useViewport = () => {
   const handleWindowSizeChange = () => setWidth(window.innerWidth);
 
   useEffect(() => {
+    setWidth(window.innerWidth);
+
     window.addEventListener('resize', handleWindowSizeChange);
     return () => {
       window.removeEventListener('resize', handleWindowSizeChange);
