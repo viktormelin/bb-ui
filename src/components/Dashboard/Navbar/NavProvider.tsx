@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import MobileNav from './MobileNav';
+import DesktopNav from './DesktopNav';
+import useViewport from '@/hooks/useViewport';
 
 export const dashboardLinks = [
   {
@@ -22,21 +24,12 @@ export const dashboardLinks = [
 ];
 
 const NavProvider = () => {
-  const [width, setWidth] = useState<number>(0);
-
-  const handleWindowSizeChange = () => setWidth(window.innerWidth);
-
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    };
-  }, []);
-
-  const isMobile = width <= 768;
+  const isMobile = useViewport();
 
   if (isMobile) {
     return <MobileNav />;
+  } else {
+    return <DesktopNav />;
   }
 };
 
