@@ -5,6 +5,7 @@ import ClientProviders from '@/components/ClientProviders';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-black text-white">
-      <body className={openSans.className}>
+      <body className={cn(openSans.className, 'relative')}>
         <ClientProviders>
           <Navbar />
           {children}
