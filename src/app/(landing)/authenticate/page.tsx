@@ -29,7 +29,7 @@ const AuthPage = () => {
   };
 
   return (
-    <main className="h-screen w-full flex flex-col items-center justify-center p-4">
+    <main className="h-screen w-full flex flex-col items-center justify-center p-4 md:max-w-2xl">
       <header>
         <h1 className="text-4xl font-medium tracking-tight mb-4">Login</h1>
       </header>

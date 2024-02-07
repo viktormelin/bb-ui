@@ -1,13 +1,11 @@
 'use client';
 
-import useUrl from '@/hooks/useUrl';
 import { authConfig, cn } from '@/lib/utils';
 import type { AuthToken } from '@authorizerdev/authorizer-js';
 import { AuthorizerProvider } from '@authorizerdev/authorizer-react';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
 import NavProvider from './Dashboard/Navbar/NavProvider';
-import useViewport from '@/hooks/useViewport';
 import { Open_Sans } from 'next/font/google';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
@@ -48,24 +46,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 };
 
 const ClientProviders = ({ children }: { children: ReactNode }) => {
-  const isMobile = useViewport();
-  const { currentPath } = useUrl();
-
   return (
     <AuthProvider>
       <body
         className={cn(
-          'flex h-screen justify-center',
+          'flex h-screen justify-center flex-col md:flex-row',
           openSans.className,
-          isMobile && 'flex-col',
         )}
       >
-        <main
-          className={cn(
-            'p-4 flex-1 overflow-auto',
-            !isMobile && 'order-1 w-full max-w-2xl',
-          )}
-        >
+        <main className="p-4 flex-1 overflow-auto md:order-1 md:w-full md:max-w-2xl">
           {children}
         </main>
         <NavProvider />
