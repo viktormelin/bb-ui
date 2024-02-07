@@ -4,9 +4,9 @@ import Button from '../ui/Button';
 import useUrl from '@/hooks/useUrl';
 
 const InviteButton = ({ link }: { link?: string }) => {
-  if (!link) return null;
+  const { baseUrl } = useUrl();
 
-  const baseUrl = useUrl();
+  if (!link) return null;
 
   const inviteUrl = baseUrl + '/join?token=' + link;
 

@@ -1,11 +1,14 @@
 'use client';
 
-import useUrl from '@/hooks/useUrl';
-import { authConfig } from '@/lib/utils';
+import { authConfig, cn } from '@/lib/utils';
 import type { AuthToken } from '@authorizerdev/authorizer-js';
 import { AuthorizerProvider } from '@authorizerdev/authorizer-react';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
+import NavProvider from './Dashboard/Navbar/NavProvider';
+import { Open_Sans } from 'next/font/google';
+
+const openSans = Open_Sans({ subsets: ['latin'] });
 
 const onStateChangeCallback = async ({
   token,
@@ -21,7 +24,7 @@ const onStateChangeCallback = async ({
   });
 };
 
-const ClientProviders = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -39,6 +42,24 @@ const ClientProviders = ({ children }: { children: ReactNode }) => {
     >
       {children}
     </AuthorizerProvider>
+  );
+};
+
+const ClientProviders = ({ children }: { children: ReactNode }) => {
+  return (
+    <AuthProvider>
+      <body
+        className={cn(
+          'flex h-screen justify-center flex-col md:flex-row',
+          openSans.className,
+        )}
+      >
+        <main className="p-4 flex-1 overflow-auto md:order-1 md:w-full md:max-w-2xl">
+          {children}
+        </main>
+        <NavProvider />
+      </body>
+    </AuthProvider>
   );
 };
 

@@ -64,10 +64,13 @@ const UpdateMemberExpenseShare = ({
         className="w-12"
       />
       {isEditing ? (
-        <CheckCircleIcon className="w-6 h-6" onClick={toggleEditMode} />
+        <CheckCircleIcon
+          className="w-6 h-6 hover:cursor-pointer"
+          onClick={toggleEditMode}
+        />
       ) : (
         <AdjustmentsHorizontalIcon
-          className="w-6 h-6"
+          className="w-6 h-6 hover:cursor-pointer"
           onClick={toggleEditMode}
         />
       )}

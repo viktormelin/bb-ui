@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const HomePage = () => {
   return (
-    <main className="p-4">
+    <main className="p-4 md:max-w-2xl">
       <section className="h-screen w-full flex flex-col items-center justify-center">
         <header>
           <h1 className="text-4xl font-medium tracking-tight mb-4">
