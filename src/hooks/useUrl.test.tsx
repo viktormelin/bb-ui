@@ -16,6 +16,6 @@ describe('should test useUrl hook', () => {
 
     const { result } = renderHook(() => useUrl());
 
-    expect(result.current).toBe('https://www.example.com');
+    expect(result.current.baseUrl).toBe('https://www.example.com');
   });
 });
