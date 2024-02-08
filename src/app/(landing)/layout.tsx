@@ -23,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-black text-white">
       <body
-        className={cn(openSans.className, 'relative md:flex md:justify-center')}
+        className={cn(
+          openSans.className,
+          'relative md:flex md:justify-center bg-hero-image bg-cover bg-center',
+        )}
       >
         <AuthProvider>
           <Navbar />
