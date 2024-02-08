@@ -19,7 +19,9 @@ const config: Config = {
         'brand-green': '#4EA66D',
       },
       backgroundImage: {
-        'hero-image': 'url(/images/12637456_5026621.jpg)',
+        'hero-image': 'url(/images/bg-light.jpg)',
+        // Use for dark mode in the future?
+        // 'hero-image': 'url(/images/bg-dark.jpg)',
       },
     },
   },
