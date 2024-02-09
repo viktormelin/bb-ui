@@ -8,15 +8,12 @@ import Link from 'next/link';
 import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const page = () => {
+const Page = () => {
   const params = useSearchParams();
   const { token } = useAuthorizer();
   const router = useRouter();
 
   const [isJoining, setIsJoining] = useState(false);
-
-  console.log(params.get('token'));
-  console.log(token);
 
   useEffect(() => {
     if (!params.get('token')) redirect('/');
@@ -56,4 +53,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
