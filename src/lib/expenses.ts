@@ -69,8 +69,6 @@ export const editExpenseSplit = async (
 };
 
 export const createExpense = async (data: any) => {
-  console.log(data);
-
   const headers = await generateAuthHeaders();
   const response = await fetch(`${process.env.API_ROUTE}/expenses/new`, {
     method: 'POST',
@@ -96,14 +94,11 @@ export const removeExpense = async (expenseId: string) => {
   });
 
   const body = await response.json();
-
-  console.log(response, body);
-
-  // if (response.ok) {
-  //   redirect(`/dashboard/expenses/${body.expense.id}`);
-  // } else {
-  //   console.error(body.error);
-  // }
+  if (response.ok) {
+    redirect(`/dashboard/expenses/${body.expense.id}`);
+  } else {
+    console.error(body.error);
+  }
 };
 
 export const resetExpense = async (expenseId: string) => {

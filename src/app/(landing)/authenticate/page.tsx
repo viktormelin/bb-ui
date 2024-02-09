@@ -17,11 +17,7 @@ const AuthPage = () => {
   }, [token]);
 
   const oauthLoginClick = (provider: string) => {
-    console.log(params.get('token'), params.get('type'));
-
     if (params.get('token') && params.get('type')) {
-      console.log('Setting values!');
-
       sessionStorage.setItem(params.get('type')!, params.get('token')!);
     }
 

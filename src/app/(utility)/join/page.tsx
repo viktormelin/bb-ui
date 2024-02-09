@@ -15,9 +15,6 @@ const Page = () => {
 
   const [isJoining, setIsJoining] = useState(false);
 
-  console.log(params.get('token'));
-  console.log(token);
-
   useEffect(() => {
     if (!params.get('token')) redirect('/');
   }, []);
