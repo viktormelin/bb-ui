@@ -20,7 +20,7 @@ const Navbar = () => {
       )}
     >
       <Image
-        src="/images/billbuddies_banner.png"
+        src="https://viktormellin.dev/cdn-cgi/imagedelivery/3ecvmLCFkS-FijMWb0qFvQ/1917567e-fc9b-4a30-4d06-578910b23800/public"
         width={200}
         height={100}
         alt="billbuddies"

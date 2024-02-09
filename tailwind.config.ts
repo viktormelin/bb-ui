@@ -19,9 +19,10 @@ const config: Config = {
         'brand-green': '#4EA66D',
       },
       backgroundImage: {
-        'hero-image': 'url(/images/bg-light.jpg)',
+        'hero-image':
+          'url(https://viktormellin.dev/cdn-cgi/imagedelivery/3ecvmLCFkS-FijMWb0qFvQ/2d613ef4-7da6-45a8-bef3-feb58a802400/public)',
         // Use for dark mode in the future?
-        // 'hero-image': 'url(/images/bg-dark.jpg)',
+        // 'hero-image': 'url(https://viktormellin.dev/cdn-cgi/imagedelivery/3ecvmLCFkS-FijMWb0qFvQ/dbab304f-60f4-4a09-f236-127a507b0a00/public)',
       },
     },
   },
