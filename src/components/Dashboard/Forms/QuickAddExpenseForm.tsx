@@ -19,8 +19,6 @@ interface IProps {
 const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
   const { loading } = useAuthorizer();
 
-  // console.log(groups);
-
   const mappedGroups: IComboBoxData[] = groups.map((group) => ({
     id: group.groups.id,
     name: group.groups.name,
@@ -44,14 +42,14 @@ const QuickAddExpenseForm = ({ groups, friends }: IProps) => {
         expense: { name: expenseName, expense_total: Number(expenseAmount) },
       };
 
-      createGroup(body);
+      await createGroup(body);
     } else {
       const body = {
         group: selectedGroup,
         expense: { name: expenseName, expense_total: Number(expenseAmount) },
       };
 
-      createExpense(body);
+      await createExpense(body);
     }
 
     setCreatingGroup(false);
