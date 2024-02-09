@@ -24,7 +24,7 @@ const AddMemberToExpense = ({ members, expense }: IProps) => {
     const response = await addUserToExpense(memberId, groupsId, expense);
     if (response === 201)
       clearCacheByPath(
-        '/(dashboard)/dashboard/groups/[group]/expenses/[expense]',
+        '/(dashboard)/dashboard/groups/[group]/expense/[expense]',
         'page',
       );
 

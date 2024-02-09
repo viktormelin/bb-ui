@@ -1,6 +1,7 @@
 import AddMemberToExpense from '@/components/Dashboard/Forms/AddMemberToExpense';
 import ResetSplitsButton from '@/components/Dashboard/Forms/ResetSplitsButton';
 import UpdateMemberExpenseShare from '@/components/Dashboard/Forms/UpdateMemberExpenseShare';
+import UpdateMemberExpenseShareAmount from '@/components/Dashboard/Forms/UpdateMemberExpenseShareAmount';
 import Text from '@/components/ui/Text';
 import { formatCurrency } from '@/lib/currency';
 import { getExpenseById } from '@/lib/expenses';
@@ -53,9 +54,15 @@ const GroupPage = async ({ params }: { params: { expense: string } }) => {
                       expenseId={split.expensesId}
                       value={split.percentage}
                     />
-                    <Text variant="xs" className="mb-0">
+                    <UpdateMemberExpenseShareAmount
+                      userId={split.group_usersId}
+                      groupId={expense.groupsId}
+                      expenseId={split.expensesId}
+                      value={split.amount}
+                    />
+                    {/* <Text variant="xs" className="mb-0">
                       {formatCurrency(split.amount)}
-                    </Text>
+                    </Text> */}
                   </div>
                 </li>
               ))}

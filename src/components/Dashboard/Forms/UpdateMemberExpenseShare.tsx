@@ -1,6 +1,7 @@
 'use client';
 
 import Input from '@/components/ui/Input';
+import Text from '@/components/ui/Text';
 import { clearCacheByPath } from '@/lib/cache';
 import { editExpenseSplit } from '@/lib/expenses';
 import {
@@ -39,11 +40,12 @@ const UpdateMemberExpenseShare = ({
         groupId,
         expenseId,
         inputValue,
+        'percentage',
       );
 
       if (response === 200)
         clearCacheByPath(
-          '/(dashboard)/dashboard/groups/[group]/expenses/[expense]',
+          '/(dashboard)/dashboard/groups/[group]/expense/[expense]',
           'page',
         );
     } else {
@@ -53,6 +55,7 @@ const UpdateMemberExpenseShare = ({
 
   return (
     <div className="flex items-center justify-center gap-2">
+      <span className="block text-xs font-medium text-neutral-400">%</span>
       <Input
         variant="transparent"
         value={inputValue}
@@ -61,7 +64,7 @@ const UpdateMemberExpenseShare = ({
         pattern="\d*"
         disabled={!isEditing}
         onChange={(e) => handleEditValue(e.target.value)}
-        className="w-12"
+        className="w-12 p-1"
       />
       {isEditing ? (
         <CheckCircleIcon
