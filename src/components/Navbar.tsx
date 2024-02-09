@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const Navbar = () => {
@@ -19,12 +20,14 @@ const Navbar = () => {
         scroll && 'bg-black/70',
       )}
     >
-      <Image
-        src="https://viktormellin.dev/cdn-cgi/imagedelivery/3ecvmLCFkS-FijMWb0qFvQ/1917567e-fc9b-4a30-4d06-578910b23800/public"
-        width={200}
-        height={100}
-        alt="billbuddies"
-      />
+      <Link href="/">
+        <Image
+          src="https://viktormellin.dev/cdn-cgi/imagedelivery/3ecvmLCFkS-FijMWb0qFvQ/1917567e-fc9b-4a30-4d06-578910b23800/public"
+          width={200}
+          height={100}
+          alt="billbuddies"
+        />
+      </Link>
     </nav>
   );
 };
