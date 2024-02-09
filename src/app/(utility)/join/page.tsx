@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const page = () => {
+const Page = () => {
   const params = useSearchParams();
   const { token } = useAuthorizer();
   const router = useRouter();
@@ -56,4 +56,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

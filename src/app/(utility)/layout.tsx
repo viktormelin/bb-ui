@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import '../../styles/globals.css';
 import Footer from '@/components/Footer';
-import ClientProviders from '@/components/ClientProviders';
+import ClientProviders, { AuthProvider } from '@/components/ClientProviders';
+import { cn } from '@/lib/utils';
+import Navbar from '@/components/Navbar';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -19,11 +21,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-black text-white">
-      <body className={openSans.className}>
-        <ClientProviders>
+      <body
+        className={cn(
+          openSans.className,
+          'relative md:flex md:justify-center bg-hero-image bg-cover bg-center',
+        )}
+      >
+        <AuthProvider>
+          <Navbar />
           {children}
           <Footer />
-        </ClientProviders>
+        </AuthProvider>
       </body>
     </html>
   );
