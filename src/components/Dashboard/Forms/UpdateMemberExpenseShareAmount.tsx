@@ -26,8 +26,6 @@ const UpdateMemberExpenseShareAmount = ({
 
   const handleEditValue = (value: string | number) => {
     const numbered = Number(value);
-    if (numbered > 100) return setInputValue(100);
-    if (numbered < 1) return setInputValue(0);
     return setInputValue(numbered);
   };
 
