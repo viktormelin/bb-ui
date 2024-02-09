@@ -52,6 +52,7 @@ export const editExpenseSplit = async (
   groupId: string,
   expenseId: string,
   updatedSplit: number | string,
+  type: 'percentage' | 'amount',
 ) => {
   const headers = await generateAuthHeaders();
   const response = await fetch(`${process.env.API_ROUTE}/expenses/edit/split`, {
@@ -62,6 +63,7 @@ export const editExpenseSplit = async (
       groupId,
       expenseId,
       updatedSplit,
+      type,
     }),
   });
 

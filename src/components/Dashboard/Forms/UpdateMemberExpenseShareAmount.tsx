@@ -1,7 +1,6 @@
 'use client';
 
 import Input from '@/components/ui/Input';
-import Text from '@/components/ui/Text';
 import { clearCacheByPath } from '@/lib/cache';
 import { editExpenseSplit } from '@/lib/expenses';
 import {
@@ -16,7 +15,7 @@ interface IProps {
   expenseId: string;
   value: number;
 }
-const UpdateMemberExpenseShare = ({
+const UpdateMemberExpenseShareAmount = ({
   userId,
   groupId,
   expenseId,
@@ -27,8 +26,6 @@ const UpdateMemberExpenseShare = ({
 
   const handleEditValue = (value: string | number) => {
     const numbered = Number(value);
-    if (numbered > 100) return setInputValue(100);
-    if (numbered < 1) return setInputValue(0);
     return setInputValue(numbered);
   };
 
@@ -40,8 +37,10 @@ const UpdateMemberExpenseShare = ({
         groupId,
         expenseId,
         inputValue,
-        'percentage',
+        'amount',
       );
+
+      console.log(response);
 
       if (response === 200)
         clearCacheByPath(
@@ -55,7 +54,7 @@ const UpdateMemberExpenseShare = ({
 
   return (
     <div className="flex items-center justify-center gap-2">
-      <span className="block text-xs font-medium text-neutral-400">%</span>
+      <span className="block text-xs font-medium text-neutral-400">kr</span>
       <Input
         variant="transparent"
         value={inputValue}
@@ -81,4 +80,4 @@ const UpdateMemberExpenseShare = ({
   );
 };
 
-export default UpdateMemberExpenseShare;
+export default UpdateMemberExpenseShareAmount;
